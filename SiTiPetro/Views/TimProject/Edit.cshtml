@@ -1,0 +1,91 @@
+﻿@model Tuple<SiTiPetro.ViewModels.TimProjectViewModel.EditTimProjectViewModel, List<SiTiPetro.Models.Developer>>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<SiTiPetro.Areas.Identity.Data.ApplicationUser> signInManager
+@{
+    ViewData["Title"] = "Edit Tim Project Aplikasi";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<section class="content">
+    <!-- left column -->
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Tim Project</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Item1.id" />
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="Item1.pm" class="control-label">Project Manager</label>
+                        <input asp-for="Item1.pm" name="pm" class="form-control" />
+                        <span asp-validation-for="Item1.pm" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Item1.ba" class="control-label">Business Analyst</label>
+                        <input asp-for="Item1.ba" name="ba" class="form-control" />
+                        <span asp-validation-for="Item1.ba" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <div style="float: right">
+                        <button type="submit" class="btn btn-success">Simpan Perubahan</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Developer</h3>
+            </div>
+            @if (Model.Item2.Any())
+            {
+                foreach (var developer in Model.Item2)
+                {
+                <div class="px-4 mt-3">
+                    <div class="row">
+                        <div class="col-4">
+                            <b>@developer.nama</b>
+                        </div>
+                        <div class="col-8">
+                            <form asp-action="Delete">
+                                <input type="hidden" value="@developer.devId" name="devId" />
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                }
+            }
+            else
+            {
+            }
+            <form asp-action="AddDev">
+                <input type="hidden" asp-for="Item1.id" name="id"/>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="Item1.devName" class="control-label">Tambah Developer</label>
+                        <div class="input-group">
+                            <input name="devName" class="form-control" />
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-success">Tambah</button>
+                            </span>
+                        </div>
+                        <span asp-validation-for="Item1.devName" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </form>
+            <!-- /.card -->
+        </div>
+        
+    </div>
+</section>
+
+

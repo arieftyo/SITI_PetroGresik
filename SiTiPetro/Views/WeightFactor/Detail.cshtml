@@ -1,0 +1,603 @@
+﻿@model SiTiPetro.ViewModels.WeightFactorViewModel.DetailWeightFactorViewModel
+@{
+    ViewData["Title"] = "Weight Factor";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+    string[] type = { "brd", "logo", "tor", "okprpo",
+        "usermanual", "uat", "eut", "ba", "changerequest", "ik", "prosedur"};
+}
+
+<section class="content">
+    <div class="col-md-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h2 class="card-title">@Model.AplikasiName</h2>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">Link Website</dt>
+                    @if (Model.WeightFactor.LinkWebsite == null)
+                    {
+                        <dd class="col-sm-9">: - </dd>
+                    }
+                    else
+                    {
+                        <dd class="col-sm-9">: @Model.WeightFactor.LinkWebsite</dd>
+                    }
+                    <dt class="col-sm-3">Link Mobile Android</dt>
+                    @if (Model.WeightFactor.LinkMobileAndroid == null)
+                    {
+                        <dd class="col-sm-9">: - </dd>
+                    }
+                    else
+                    {
+                        <dd class="col-sm-9">: @Model.WeightFactor.LinkMobileAndroid</dd>
+                    }
+                    <dt class="col-sm-3">Link Mobile iOs</dt>
+                    @if (Model.WeightFactor.LinkMobileiOs == null)
+                    {
+                        <dd class="col-sm-9">: - </dd>
+                    }
+                    else
+                    {
+                        <dd class="col-sm-9">: @Model.WeightFactor.LinkMobileiOs</dd>
+                    }
+                    <dt class="col-sm-3">Server</dt>
+                    @if (Model.WeightFactor.Server == null)
+                    {
+                        <dd class="col-sm-9">: - </dd>
+                    }
+                    else
+                    {
+                        <dd class="col-sm-9">: @Model.WeightFactor.Server</dd>
+                    }
+                    <dt class="col-sm-3">Database</dt>
+                    @if (Model.WeightFactor.Database == null)
+                    {
+                        <dd class="col-sm-9">: - </dd>
+                    }
+                    else
+                    {
+                        <dd class="col-sm-9">: @Model.WeightFactor.Database</dd>
+                    }
+                </dl>
+                <button class="btn btn-success btn-sm float-right" data-toggle="modal" data-target="@("#modal-edit")">
+                    <i class="fas fa-edit">
+                    </i>
+                    Edit Data
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h2 class="card-title">Upload File</h2>
+            </div>
+            <div class="card-body">
+                <table id="table" class="table table-bordered table-hover" style="width:80%">
+                    <h3> Upload File</h3>
+                    <br />
+                    <thead>
+                        <tr>
+                            <th>
+                                Deskripsi
+                            </th>
+                            <th>
+                                File
+                            </th>
+                            <th>
+                                Upload
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                BRD
+                            </td>
+                            @if (Model.WeightFactor.FileBrd == null)
+                            {
+                                <td>
+                                    Tidak ada File
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a class="btn btn-success btn-sm" style="width: 250px" asp-action="Download"
+                                       asp-route-filename="@Model.WeightFactor.FileBrd">
+                                        <i class="fas fa-download">
+                                        </i>
+                                        Download File BRD
+                                    </a>
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" style="width: 250px" data-toggle="modal" data-target="@("#modal-upload-brd")">
+                                    <i class="fas fa-upload">
+                                    </i>
+                                    Upload BRD
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Logo
+                            </td>
+                            @if (Model.WeightFactor.FileLogo == null)
+                            {
+                                <td>
+                                    Tidak ada File
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a class="btn btn-success btn-sm" style="width: 250px" asp-action="Download"
+                                       asp-route-filename="@Model.WeightFactor.FileLogo">
+                                        <i class="fas fa-download">
+                                        </i>
+                                        Download File Logo
+                                    </a>
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" style="width: 250px" data-toggle="modal" data-target="@("#modal-upload-logo")">
+                                    <i class="fas fa-upload">
+                                    </i>
+                                    Upload Logo
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                TOR
+                            </td>
+                            @if (Model.WeightFactor.FileTor == null)
+                            {
+                                <td>
+                                    Tidak ada File
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a class="btn btn-success btn-sm" style="width: 250px" asp-action="Download"
+                                       asp-route-filename="@Model.WeightFactor.FileTor">
+                                        <i class="fas fa-download">
+                                        </i>
+                                        Download File TOR
+                                    </a>
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" style="width: 250px" data-toggle="modal" data-target="@("#modal-upload-tor")">
+                                    <i class="fas fa-upload">
+                                    </i>
+                                    Upload TOR
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                OK/PR/PO
+                            </td>
+                            @if (Model.WeightFactor.FileOkPrPo == null)
+                            {
+                                <td>
+                                    Tidak ada File
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a class="btn btn-success btn-sm" style="width: 250px" asp-action="Download"
+                                       asp-route-filename="@Model.WeightFactor.FileOkPrPo">
+                                        <i class="fas fa-download">
+                                        </i>
+                                        Download File OK/PR/PO
+                                    </a>
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" style="width: 250px" data-toggle="modal" data-target="@("#modal-upload-okprpo")">
+                                    <i class="fas fa-upload">
+                                    </i>
+                                    Upload OK/PR/PO
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                User Manual
+                            </td>
+                            @if (Model.WeightFactor.FileUserManualgembangan == null)
+                            {
+                                <td>
+                                    Tidak ada File
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a class="btn btn-success btn-sm" style="width: 250px" asp-action="Download"
+                                       asp-route-filename="@Model.WeightFactor.FileUserManualgembangan">
+                                        <i class="fas fa-download">
+                                        </i>
+                                        Download File User Manual
+                                    </a>
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" style="width: 250px" data-toggle="modal" data-target="@("#modal-upload-usermanual")">
+                                    <i class="fas fa-upload">
+                                    </i>
+                                    Upload User Manual
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                UAT
+                            </td>
+                            @if (Model.WeightFactor.FileUat == null)
+                            {
+                                <td>
+                                    Tidak ada File
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a class="btn btn-success btn-sm" style="width: 250px" asp-action="Download"
+                                       asp-route-filename="@Model.WeightFactor.FileUat">
+                                        <i class="fas fa-download">
+                                        </i>
+                                        Download File UAT
+                                    </a>
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" style="width: 250px" data-toggle="modal" data-target="@("#modal-upload-uat")">
+                                    <i class="fas fa-upload">
+                                    </i>
+                                    Upload UAT
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                EUT
+                            </td>
+                            @if (Model.WeightFactor.FileEut == null)
+                            {
+                                <td>
+                                    Tidak ada File
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a class="btn btn-success btn-sm" style="width: 250px" asp-action="Download"
+                                       asp-route-filename="@Model.WeightFactor.FileEut">
+                                        <i class="fas fa-download">
+                                        </i>
+                                        Download File EUT
+                                    </a>
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" style="width: 250px" data-toggle="modal" data-target="@("#modal-upload-eut")">
+                                    <i class="fas fa-upload">
+                                    </i>
+                                    Upload User EUT
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                BA
+                            </td>
+                            @if (Model.WeightFactor.FileBa == null)
+                            {
+                                <td>
+                                    Tidak ada File
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a class="btn btn-success btn-sm" style="width: 250px" asp-action="Download"
+                                       asp-route-filename="@Model.WeightFactor.FileBa">
+                                        <i class="fas fa-download">
+                                        </i>
+                                        Download File BA
+                                    </a>
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" style="width: 250px" data-toggle="modal" data-target="@("#modal-upload-ba")">
+                                    <i class="fas fa-upload">
+                                    </i>
+                                    Upload BA
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Change Request
+                            </td>
+                            @if (Model.WeightFactor.FileChangeRequest == null)
+                            {
+                                <td>
+                                    Tidak ada File
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a class="btn btn-success btn-sm" style="width: 250px" asp-action="Download"
+                                       asp-route-filename="@Model.WeightFactor.FileChangeRequest">
+                                        <i class="fas fa-download">
+                                        </i>
+                                        Download File Change Request
+                                    </a>
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" style="width: 250px" data-toggle="modal" data-target="@("#modal-upload-changerequest")">
+                                    <i class="fas fa-upload">
+                                    </i>
+                                    Upload Change Request
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                IK
+                            </td>
+                            @if (Model.WeightFactor.FileIk == null)
+                            {
+                                <td>
+                                    Tidak ada File
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a class="btn btn-success btn-sm" style="width: 250px" asp-action="Download"
+                                       asp-route-filename="@Model.WeightFactor.FileIk">
+                                        <i class="fas fa-download">
+                                        </i>
+                                        Download File IK
+                                    </a>
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" style="width: 250px" data-toggle="modal" data-target="@("#modal-upload-ik")">
+                                    <i class="fas fa-upload">
+                                    </i>
+                                    Upload IK
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Prosedur
+                            </td>
+                            @if (Model.WeightFactor.FileProsedur == null)
+                            {
+                                <td>
+                                    Tidak ada File
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a class="btn btn-success btn-sm" style="width: 250px" asp-action="Download"
+                                       asp-route-filename="@Model.WeightFactor.FileProsedur">
+                                        <i class="fas fa-download">
+                                        </i>
+                                        Download File Prosedur
+                                    </a>
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" style="width: 250px" data-toggle="modal" data-target="@("#modal-upload-prosedur")">
+                                    <i class="fas fa-upload">
+                                    </i>
+                                    Upload Prosedur
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+@foreach (var x in type)
+{
+    <div class="modal fade" id="@("modal-upload-"+x)">
+        <form asp-action="UploadFile" enctype="multipart/form-data">
+            <input type="hidden" asp-for="@Model.WeightFactor.Id" name="id" />
+            <input type="hidden" asp-for="@Model.WeightFactor.AplikasiId" name="aplikasiId" />
+            <input type="hidden" name="type" value="@x" />
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        @if (x.Equals("brd"))
+                        {
+                            <h3 class="modal-title">Upload File BRD</h3>
+                        }
+                        @if (x.Equals("logo"))
+                        {
+                            <h3 class="modal-title">Upload File Logo</h3>
+                        }
+                        @if (x.Equals("tor"))
+                        {
+                            <h3 class="modal-title">Upload File TOR</h3>
+                        }
+                        @if (x.Equals("okprpo"))
+                        {
+                            <h3 class="modal-title">Upload File OK/PR/PO</h3>
+                        }
+                        @if (x.Equals("usermanual"))
+                        {
+                            <h3 class="modal-title">Upload File User Manual</h3>
+                        }
+                        @if (x.Equals("uat"))
+                        {
+                            <h3 class="modal-title">Upload File UAT</h3>
+                        }
+                        @if (x.Equals("eut"))
+                        {
+                            <h3 class="modal-title">Upload File EUT</h3>
+                        }
+                        @if (x.Equals("ba"))
+                        {
+                            <h3 class="modal-title">Upload File BA</h3>
+                        }
+                        @if (x.Equals("changerequest"))
+                        {
+                            <h3 class="modal-title">Upload File Change Request</h3>
+                        }
+                        @if (x.Equals("ik"))
+                        {
+                            <h3 class="modal-title">Upload File IK</h3>
+                        }
+                        @if (x.Equals("prosedur"))
+                        {
+                            <h3 class="modal-title">Upload File Prosedur</h3>
+                        }
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            @if (x.Equals("brd"))
+                            {
+                                <label>File BRD</label>
+                            }
+                            @if (x.Equals("logo"))
+                            {
+                                <label>File Logo</label>
+                            }
+                            @if (x.Equals("tor"))
+                            {
+                                <label>File TOR</label>
+                            }
+                            @if (x.Equals("okprpo"))
+                            {
+                                <label>File OK/PR/PO</label>
+                            }
+                            @if (x.Equals("usermanual"))
+                            {
+                                <label>File User Manual</label>
+                            }
+                            @if (x.Equals("uat"))
+                            {
+                                <h3 class="modal-title">Upload File UAT</h3>
+                            }
+                            @if (x.Equals("eut"))
+                            {
+                                <label>File EUT</label>
+                            }
+                            @if (x.Equals("ba"))
+                            {
+                                <label>File BA</label>
+                            }
+                            @if (x.Equals("changerequest"))
+                            {
+                                <label>File Change Request</label>
+                            }
+                            @if (x.Equals("ik"))
+                            {
+                                <Label>File IK</Label>
+                            }
+                            @if (x.Equals("prosedur"))
+                            {
+                                <label>File Prosedur</label>
+                            }
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile" name="file">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+        </form>
+        <!-- /.modal-dialog -->
+    </div>
+}
+
+
+<div class="modal fade" id="@("modal-edit")">
+    <form asp-action="EditData">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Edit Data Weight Factor</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="@Model.WeightFactor.Id" name="id" />
+                    <input type="hidden" asp-for="@Model.AplikasiId" name="aplikasiId" />
+
+                    <div class="form-group">
+                        <label asp-for="@Model.WeightFactor.LinkWebsite" class="control-label">Link Website</label>
+                        <input asp-for="@Model.WeightFactor.LinkWebsite" class="form-control" name="linkWebsite" />
+                        <span asp-validation-for="@Model.WeightFactor.LinkWebsite" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.WeightFactor.LinkMobileAndroid" class="control-label">Link Mobile Android</label>
+                        <input asp-for="@Model.WeightFactor.LinkMobileAndroid" class="form-control" name="linkMobileAndorid" />
+                        <span asp-validation-for="@Model.WeightFactor.LinkMobileAndroid" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.WeightFactor.LinkMobileiOs" class="control-label">Link Mobile iOs</label>
+                        <input asp-for="@Model.WeightFactor.LinkMobileiOs" class="form-control" name="linkMobileiOs" />
+                        <span asp-validation-for="@Model.WeightFactor.LinkMobileiOs" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.WeightFactor.Server" class="control-label">Server</label>
+                        <input asp-for="@Model.WeightFactor.Server" class="form-control" name="server" />
+                        <span asp-validation-for="@Model.WeightFactor.Server" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.WeightFactor.Database" class="control-label">Database</label>
+                        <input asp-for="@Model.WeightFactor.Database" class="form-control" name="database" />
+                        <span asp-validation-for="@Model.WeightFactor.Database" class="text-danger"></span>
+                    </div>
+                </div>
+                
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        bsCustomFileInput.init();
+    });
+</script>

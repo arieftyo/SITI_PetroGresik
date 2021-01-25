@@ -1,0 +1,165 @@
+﻿@model SiTiPetro.Models.RencanaTimeline
+@{
+    ViewData["Title"] = "Rencana Timeline";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<section class="content">
+    <div class="col-md-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Rencana Timeline</h3>
+            </div>
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="AplikasiId" name="aplikasiId" />
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="control-label">BRD</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateBrd" name="dateBrd">
+                            <span asp-validation-for="BrdDate1" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Finalisasi BRD & TOR</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateFinalisasiBrd" name="dateFinalisasiBrd">
+                            <span asp-validation-for="FinalBrdDate1" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Pengadaan</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="datePengadaan" name="datePengadaan">
+                            <span asp-validation-for="PengadaanDate1" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Desain Prototype</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateDesainPrototype" name="dateDesainPrototype">
+                            <span asp-validation-for="DesainPrototypeDate1" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Pengembangan</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="datePengembangan" name="datePengembangan">
+                            <span asp-validation-for="PengadaanDate1" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Testing / UAT</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateTesting" name="dateTesting">
+                            <span asp-validation-for="TestingDate1" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">End User Training (EUT)</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateEut" name="dateEut">
+                            <span asp-validation-for="EutDate1" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Go Live</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateGolive" name="dateGolive">
+                            <span asp-validation-for="GoLiveDate1" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Support</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateSupport" name="dateSupport">
+                            <span asp-validation-for="SupportDate1" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Closing</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateClosing" name="dateClosing">
+                            <span asp-validation-for="ClosingDate1" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Simpan Rencana Timeline</button>
+
+                    <div style="float: right">
+                        <a asp-action="Detail" asp-route-id="@Model.AplikasiId" class="btn btn-success">Kembali</a>
+                    </div>
+                </div>
+            </form>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</section>
+<script>
+    $(function () {
+
+        //Date range picker
+        $('#dateClosing').daterangepicker()
+        $('#dateSupport').daterangepicker()
+        $('#dateGolive').daterangepicker()
+        $('#dateEut').daterangepicker()
+        $('#dateTesting').daterangepicker()
+        $('#datePengembangan').daterangepicker()
+        $('#dateDesainPrototype').daterangepicker()
+        $('#datePengadaan').daterangepicker()
+        $('#dateFinalisasiBrd').daterangepicker()
+        $('#dateBrd').daterangepicker()
+    })
+</script>

@@ -1,0 +1,145 @@
+﻿@model SiTiPetro.ViewModels.RencanaWeightFactorViewModel.DetailRencanaWeightFactorViewModel
+@{
+    ViewData["Title"] = "Rencana Weight Factor";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+@if (Model.rencanaWeightFactor != null)
+{
+<section class="content">
+    <div class="card" style="width:50%">
+        <div class="card-header p-2">
+            <h2 class="card-title">@Model.aplikasiName</h2>
+        </div>
+        <div class="card-body">
+            <table id="table" class="table table-bordered table-hover" style="width:80%">
+                <thead>
+                    <tr>
+                        <th>
+                            Deskripsi
+                        </th>
+                        <th>
+                            Weight
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            BRD
+                        </td>
+                        <td>
+                            @Model.rencanaWeightFactor.BRD
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Finalisasi BRD & RKS
+                        </td>
+                        <td>
+                            @Model.rencanaWeightFactor.FinalisasiBRD
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Pengadaan
+                        </td>
+                        <td>
+                            @Model.rencanaWeightFactor.Pengadaan
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Desain Prototype
+                        </td>
+                        <td>
+                            @Model.rencanaWeightFactor.DesainPrototype
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Pengembangan
+                        </td>
+                        <td>
+                            @Model.rencanaWeightFactor.Pengembangan
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Testing / UAT
+                        </td>
+                        <td>
+                            @Model.rencanaWeightFactor.Testing
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            End User Training (EUT)
+                        </td>
+                        <td>
+                            @Model.rencanaWeightFactor.EUT
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Go Live
+                        </td>
+                        <td>
+                            @Model.rencanaWeightFactor.GoLive
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Support
+                        </td>
+                        <td>
+                            @Model.rencanaWeightFactor.Support
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <div class="text-right mr-3 mt-3">
+                    <a asp-action="Edit" asp-route-id="@Model.rencanaWeightFactor.AplikasiId" class="btn btn-sm btn-primary">Edit Data</a>
+                    <a asp-controller="Aplikasis" asp-action="Details" asp-route-id="@Model.rencanaWeightFactor.AplikasiId" class="btn btn-sm btn-success text-right">Kembali</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+}
+else
+{
+    <section class="content">
+        <div class="card">
+            <div class="card-header p-2">
+                <h2 class="card-title">@Model.aplikasiName</h2>
+            </div>
+            <div class="card-body">
+                <h3>Rencana Weight Factor Tidak ada</h3>
+                <div>
+                    <div class="mr-3 mt-3">
+                        <a asp-controller="RencanaWeightFactor" asp-action="Create" asp-route-id="@Model.aplikasiId" class="btn btn-sm btn-success">Buat Rencana Weight Factor</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+
+<script>
+    $(function () {
+        $("#table").DataTable({
+            "columns": [
+                { "width": "30%", "targets": 0 }
+            ],
+            "paging": false,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": false,
+            "info": false,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>

@@ -1,0 +1,120 @@
+﻿@model IEnumerable<SiTiPetro.Models.Aplikasi>
+
+
+@{
+    ViewData["Title"] = "Daftar Aplikasi";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="card-body">
+        <table id="table" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Nama Aplikasi
+                    </th>
+                    <th>
+                        Tahun
+                    </th>
+                    <th>
+                        PIC TI PI PG
+                    </th>
+                    <th>
+                        Pengerjaan
+                    </th>
+                    <th>
+                        Jenis Aplikasi
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nama)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem=> item.tahun)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pic_ti_pi_pg)
+                    </td>
+                    @if (item.pengerjaan == 1)
+                    {
+                        <td>
+                            In House
+                        </td>
+                    }
+                    else if (item.pengerjaan == 2)
+                    {
+                        <td>
+                            Vendor
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            Belum
+                        </td>
+                    }
+                   @if (item.jenis_aplikasi == 1)
+                    {
+                        <td>
+                            Website
+                        </td>
+                    }
+
+                    @if (item.jenis_aplikasi == 2)
+                    {
+                        <td>
+                            Mobile
+                        </td>
+                    }
+                    @if (item.jenis_aplikasi == 3)
+                    {
+                        <td>
+                            Website dan Mobile
+                        </td>
+                    }
+                    <td>
+                        <div style="display: inline-block;">
+                            <a asp-controller="Aplikasis" asp-action="Details" asp-route-id="@item.Id" class="btn btn-block btn-primary">Details</a>
+                        </div>
+                        <div style="display: inline-block; margin-left: 30px">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-block btn-success">Edit</a>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        $(function () {
+            $("#table").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "responsive": true,
+            });
+        });
+    </script>
+</body>
+
+</html>

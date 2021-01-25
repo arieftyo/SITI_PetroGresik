@@ -1,0 +1,90 @@
+﻿@model SiTiPetro.Models.RencanaWeightFactor
+@{
+    ViewData["Title"] = "Rencana Weight Factor";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<section class="content">
+    <div class="col-md-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Rencana Timeline</h3>
+            </div>
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="AplikasiId" name="aplikasiId" />
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="BRD" class="control-label">BRD</label>
+                        <input asp-for="BRD" class="form-control" name="brd" />
+                        <span asp-validation-for="BRD" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FinalisasiBRD" class="control-label">FinalisasiBRD</label>
+                        <input asp-for="FinalisasiBRD" class="form-control" name="finalisasiBRD" />
+                        <span asp-validation-for="FinalisasiBRD" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Pengadaan" class="control-label">Pengadaan</label>
+                        <input asp-for="Pengadaan" class="form-control" name="pengadaan" />
+                        <span asp-validation-for="Pengadaan" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DesainPrototype" class="control-label">DesainPrototype</label>
+                        <input asp-for="DesainPrototype" class="form-control" name="desainPrototype" />
+                        <span asp-validation-for="DesainPrototype" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Pengembangan" class="control-label">Pengembangan</label>
+                        <input asp-for="Pengembangan" class="form-control" name="pengembangan" />
+                        <span asp-validation-for="Pengembangan" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Testing" class="control-label">Testing</label>
+                        <input asp-for="Testing" class="form-control" name="testing" />
+                        <span asp-validation-for="Testing" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EUT" class="control-label">EUT</label>
+                        <input asp-for="EUT" class="form-control" name="eut" />
+                        <span asp-validation-for="EUT" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="GoLive" class="control-label">Go Live</label>
+                        <input asp-for="GoLive" class="form-control" name="goLive" />
+                        <span asp-validation-for="GoLive" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Support" class="control-label">Support</label>
+                        <input asp-for="Support" class="form-control" name="support" />
+                        <span asp-validation-for="Support" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Simpan Rencana Weight Factor</button>
+
+                    <div style="float: right">
+                        <a asp-action="Detail" asp-route-id="@Model.AplikasiId" class="btn btn-success">Kembali</a>
+                    </div>
+                </div>
+            </form>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</section>
+<script>
+    $(function () {
+
+        //Date range picker
+        $('#dateClosing').daterangepicker()
+        $('#dateSupport').daterangepicker()
+        $('#dateGolive').daterangepicker()
+        $('#dateEut').daterangepicker()
+        $('#dateTesting').daterangepicker()
+        $('#datePengembangan').daterangepicker()
+        $('#dateDesainPrototype').daterangepicker()
+        $('#datePengadaan').daterangepicker()
+        $('#dateFinalisasiBrd').daterangepicker()
+        $('#dateBrd').daterangepicker()
+    })
+</script>

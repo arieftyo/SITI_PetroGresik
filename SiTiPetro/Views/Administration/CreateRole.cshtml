@@ -1,0 +1,36 @@
+﻿@model SiTiPetro.ViewModels.CreateRoleViewModel
+@{
+    ViewData["Title"] = "Create New Role";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<section class="content">
+    <!-- left column -->
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Create Role</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form asp-action="CreateRole">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="RoleName" class="control-label">Role Name</label>
+                        <input asp-for="RoleName" class="form-control" placeholder="Nama" />
+                        <span asp-validation-for="RoleName" class="text-danger"></span>
+                    </div>
+                    
+                <!-- /.card-body -->
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Create Role</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.card -->
+    </div>
+</section>
+

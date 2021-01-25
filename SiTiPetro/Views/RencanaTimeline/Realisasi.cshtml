@@ -1,0 +1,546 @@
+﻿@model SiTiPetro.ViewModels.RencanaTimelineViewModel.RealisasiRencanaTimelineViewModel
+@{
+    ViewData["Title"] = "Realisasi Timeline";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+    string[] type = { "Brd", "FinalisasiBrd", "Pengadaan", "DesainPrototype",
+        "Pengembangan", "Testing", "Eut", "GoLive", "Support", "Closing"};
+}
+
+@if (Model.rencanaTimeline != null)
+{
+    <section class="content">
+        <div class="card">
+            <div class="card-header p-2">
+                <h2 class="card-title">@Model.aplikasiName</h2>
+            </div>
+            <div class="card-body">
+                <table id="table" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                Aktivitas
+                            </th>
+                            <th>
+                                Tanggal Timeline
+                            </th>
+                            <th>
+                                Realisasi Timeline
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                BRD
+                            </td>
+                            <td>
+                                @Model.rencanaTimeline.BrdDate1 - @Model.rencanaTimeline.BrdDate2
+                            </td>
+
+                            @if (Model.rencanaTimeline.RealisasiBrdDate1 == null || Model.rencanaTimeline.RealisasiBrdDate2 == null)
+                            {
+
+                                <td>
+                                    -
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Model.rencanaTimeline.RealisasiBrdDate1 - @Model.rencanaTimeline.RealisasiBrdDate2
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="@("#modal-edit-Brd")">
+                                    <i class="fas fa-edit">
+                                    </i>
+                                    Edit Realisasi
+                                </button>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="@("#modal-delete-Brd")">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Finalisasi BRD
+                            </td>
+                            <td>
+                                @Model.rencanaTimeline.FinalBrdDate1 - @Model.rencanaTimeline.FinalBrdDate2
+                            </td>
+                            @if (Model.rencanaTimeline.RealisasiFinalBrdDate1 == null || Model.rencanaTimeline.RealisasiFinalBrdDate2 == null)
+                            {
+
+                                <td>
+                                    -
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Model.rencanaTimeline.RealisasiFinalBrdDate1 - @Model.rencanaTimeline.RealisasiFinalBrdDate2
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="@("#modal-edit-FinalisasiBrd")">
+                                    <i class="fas fa-edit">
+                                    </i>
+                                    Edit Realisasi
+                                </button>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="@("#modal-delete-FinalisasiBrd")">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Pengadaan
+                            </td>
+                            <td>
+                                @Model.rencanaTimeline.PengadaanDate1 - @Model.rencanaTimeline.PengadaanDate2
+                            </td>
+                            @if (Model.rencanaTimeline.RealisasiPengadaanDate1 == null || Model.rencanaTimeline.RealisasiPengadaanDate2 == null)
+                            {
+
+                                <td>
+                                    -
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Model.rencanaTimeline.RealisasiPengadaanDate1 - @Model.rencanaTimeline.RealisasiPengadaanDate2
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="@("#modal-edit-Pengadaan")">
+                                    <i class="fas fa-edit">
+                                    </i>
+                                    Edit Realisasi
+                                </button>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="@("#modal-delete-Pengadaan")">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Desain Prototype
+                            </td>
+                            <td>
+                                @Model.rencanaTimeline.DesainPrototypeDate1 - @Model.rencanaTimeline.DesainPrototypeDate2
+                            </td>
+                            @if (Model.rencanaTimeline.RealisasiDesainPrototypeDate1 == null || Model.rencanaTimeline.RealisasiDesainPrototypeDate2 == null)
+                            {
+
+                                <td>
+                                    -
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Model.rencanaTimeline.RealisasiDesainPrototypeDate1 - @Model.rencanaTimeline.RealisasiDesainPrototypeDate2
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="@("#modal-edit-DesainPrototype")">
+                                    <i class="fas fa-edit">
+                                    </i>
+                                    Edit Realisasi
+                                </button>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="@("#modal-delete-DesainPrototype")">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Pengembangan
+                            </td>
+                            <td>
+                                @Model.rencanaTimeline.PengembanganDate1 - @Model.rencanaTimeline.PengembanganDate2
+                            </td>
+                            @if (Model.rencanaTimeline.RealisasiPengembanganDate1 == null || Model.rencanaTimeline.RealisasiPengembanganDate2 == null)
+                            {
+
+                                <td>
+                                    -
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Model.rencanaTimeline.RealisasiPengembanganDate1 - @Model.rencanaTimeline.RealisasiPengembanganDate2
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="@("#modal-edit-Pengembangan")">
+                                    <i class="fas fa-edit">
+                                    </i>
+                                    Edit Realisasi
+                                </button>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="@("#modal-delete-Pengembangan")">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Testing / UAT
+                            </td>
+                            <td>
+                                @Model.rencanaTimeline.TestingDate1 - @Model.rencanaTimeline.TestingDate2
+                            </td>
+                            @if (Model.rencanaTimeline.RealisasiTestingDate1 == null || Model.rencanaTimeline.RealisasiTestingDate2 == null)
+                            {
+
+                                <td>
+                                    -
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Model.rencanaTimeline.RealisasiTestingDate1 - @Model.rencanaTimeline.RealisasiTestingDate2
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="@("#modal-edit-Testing")">
+                                    <i class="fas fa-edit">
+                                    </i>
+                                    Edit Realisasi
+                                </button>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="@("#modal-delete-Testing")">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                End User Training (EUT)
+                            </td>
+                            <td>
+                                @Model.rencanaTimeline.EutDate1 - @Model.rencanaTimeline.EutDate2
+                            </td>
+                            @if (Model.rencanaTimeline.RealisasiEutDate1 == null || Model.rencanaTimeline.RealisasiEutDate2 == null)
+                            {
+
+                                <td>
+                                    -
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Model.rencanaTimeline.RealisasiEutDate1 - @Model.rencanaTimeline.RealisasiEutDate2
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="@("#modal-edit-Eut")">
+                                    <i class="fas fa-edit">
+                                    </i>
+                                    Edit Realisasi
+                                </button>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="@("#modal-delete-Eut")">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Go Live
+                            </td>
+                            <td>
+                                @Model.rencanaTimeline.GoLiveDate1 - @Model.rencanaTimeline.GoLiveDate2
+                            </td>
+                            @if (Model.rencanaTimeline.RealisasiGoLiveDate1 == null || Model.rencanaTimeline.RealisasiGoLiveDate2 == null)
+                            {
+
+                                <td>
+                                    -
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Model.rencanaTimeline.RealisasiGoLiveDate1 - @Model.rencanaTimeline.RealisasiGoLiveDate2
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="@("#modal-edit-GoLive")">
+                                    <i class="fas fa-edit">
+                                    </i>
+                                    Edit Realisasi
+                                </button>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="@("#modal-delete-GoLive")">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Support
+                            </td>
+                            <td>
+                                @Model.rencanaTimeline.SupportDate1 - @Model.rencanaTimeline.SupportDate2
+                            </td>
+                            @if (Model.rencanaTimeline.RealisasiSupportDate1 == null || Model.rencanaTimeline.RealisasiSupportDate2 == null)
+                            {
+
+                                <td>
+                                    -
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Model.rencanaTimeline.RealisasiSupportDate1 - @Model.rencanaTimeline.RealisasiSupportDate2
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="@("#modal-edit-Support")">
+                                    <i class="fas fa-edit">
+                                    </i>
+                                    Edit Realisasi
+                                </button>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="@("#modal-delete-Support")">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Closing
+                            </td>
+                            <td>
+                                @Model.rencanaTimeline.ClosingDate1 - @Model.rencanaTimeline.ClosingDate2
+                            </td>
+                            @if (Model.rencanaTimeline.RealisasiClosingDate1 == null || Model.rencanaTimeline.RealisasiClosingDate2 == null)
+                            {
+
+                                <td>
+                                    -
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Model.rencanaTimeline.RealisasiClosingDate1 - @Model.rencanaTimeline.RealisasiClosingDate2
+                                </td>
+                            }
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="@("#modal-edit-Closing")">
+                                    <i class="fas fa-edit">
+                                    </i>
+                                    Edit Realisasi
+                                </button>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="@("#modal-delete-Closing")">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <div class="text-right mr-3 mt-3">
+                        <a asp-controller="Aplikasis" asp-action="Details" asp-route-id="@Model.rencanaTimeline.AplikasiId" class="btn btn-sm btn-success text-right">Kembali</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    <section class="content">
+        <div class="card">
+            <div class="card-header p-2">
+                <h2 class="card-title">@Model.aplikasiName</h2>
+            </div>
+            <div class="card-body">
+                <h3>Realisasi Timeline Tidak ada</h3>
+                <div>
+                    <div class="text-right mr-3 mt-3">
+                        <a asp-controller="RencanaTimeline" asp-action="Create" asp-route-id="@Model.aplikasiId" class="btn btn-sm btn-success text-right">Buat Rencana Timeline</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+@foreach (var x in type)
+{
+    <div class="modal fade" id="@("modal-edit-"+x)">
+        <form asp-action="@("UpdateRealisasi"+x)">
+            <input type="hidden" asp-for="@Model.rencanaTimeline.Id" name="id" />
+            <input type="hidden" asp-for="@Model.rencanaTimeline.AplikasiId" name="aplikasiId" />
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        @if (x.Equals("FinalisasiBrd"))
+                        {
+                            <h3 class="modal-title">Edit Realisasi Timeline Finalisasi Brd</h3>
+                        }
+                        else if (x.Equals("DesainPrototype"))
+                        {
+                            <h3 class="modal-title">Edit Realisasi Timeline Desain Prototype</h3>
+                        }
+                        else if (x.Equals("GoLive"))
+                        {
+                            <h3 class="modal-title">Edit Realisasi Timeline Go Live</h3>
+                        }
+                        else
+                        {
+                            <h3 class="modal-title">@("Edit Realisasi Timeline "+x)</h3>
+                        }
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            @if (x.Equals("FinalisasiBrd"))
+                            {
+                                <label>Finalisasi BRD</label>
+                            }
+                            else if (x.Equals("DesainPrototype"))
+                            {
+                                <label>Desain Prototype</label>
+                            }
+                            else if (x.Equals("GoLive"))
+                            {
+                                <label>Go Live</label>
+                            }
+                            else
+                            {
+                                <label>@x</label>
+                            }
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="far fa-calendar-alt"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control float-right" id=@("date"+x) name=@("date"+x)>
+                                <span asp-validation-for="@Model.rencanaTimeline.RealisasiPengadaanDate1" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+        </form>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" id="@("modal-delete-"+x)">
+        <form asp-action="DeleteRealisasi">
+            <input type="hidden" asp-for="@Model.rencanaTimeline.Id" name="id" />
+            <input type="hidden" asp-for="@Model.rencanaTimeline.AplikasiId" name="aplikasiId" />
+            <input type="hidden" value="@x" name="type" />
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        @if (x.Equals("FinalisasiBrd"))
+                        {
+                            <h3 class="modal-title">Edit Realisasi Timeline Finalisasi Brd</h3>
+                        }
+                        else if (x.Equals("DesainPrototype"))
+                        {
+                            <h3 class="modal-title">Edit Realisasi Timeline Desain Prototype</h3>
+                        }
+                        else if (x.Equals("GoLive"))
+                        {
+                            <h3 class="modal-title">Edit Realisasi Timeline Go Live</h3>
+                        }
+                        else
+                        {
+                            <h3 class="modal-title">@("Hapus Realisasi Timeline "+x)</h3>
+                        }
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @if (x.Equals("FinalisasiBrd"))
+                        {
+                            <p>Apakah Anda yakin untuk menghapus Rencana Timeline Finalisasi BRD</p>
+                        }
+                        else if (x.Equals("DesainPrototype"))
+                        {
+                            <p>Apakah Anda yakin untuk menghapus Rencana Timeline Desain Prototype</p>
+                        }
+                        else if (x.Equals("GoLive"))
+                        {
+                            <p>Apakah Anda yakin untuk menghapus Rencana Timeline Go Live</p>
+                        }
+                        else
+                        {
+                            <p>@("Apakah Anda yakin untuk menghapus Rencana Timeline "+x+" ?")</p>
+                        }
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
+                        <button type="submit" class="btn btn-primary">Iya</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+        </form>
+        <!-- /.modal-dialog -->
+    </div>
+}
+
+<script>
+    $(function () {
+        $("#table").DataTable({
+            "paging": false,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": false,
+            "info": false,
+            "autoWidth": false,
+            "responsive": true,
+        });
+        $('#dateClosing').daterangepicker()
+        $('#dateSupport').daterangepicker()
+        $('#dateGoLive').daterangepicker()
+        $('#dateEut').daterangepicker()
+        $('#dateTesting').daterangepicker()
+        $('#datePengembangan').daterangepicker()
+        $('#dateDesainPrototype').daterangepicker()
+        $('#datePengadaan').daterangepicker()
+        $('#dateFinalisasiBrd').daterangepicker()
+        $('#dateBrd').daterangepicker()
+    });
+</script>
+

@@ -1,0 +1,83 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\Aplikasi\20201109024254_addDeveloperModel.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201109024254_addDeveloperModel.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201112001855_RencanaTimelien.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201112001855_RencanaTimelien.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201112010842_AplikasiIdinRencanaTimelien.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201112010842_AplikasiIdinRencanaTimelien.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201112012542_AplikasiIdinRencanaTimelien.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201112012542_AplikasiIdinRencanaTimelien.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201112012704_AplikasiIdinRencanaTimelien.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201112012704_AplikasiIdinRencanaTimelien.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201112013407_AddAplikasiId.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201112013407_AddAplikasiId.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201112013555_AddAplikasiId.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201112013555_AddAplikasiId.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201112063322_AddAplikasiNameInRencanaTimeline.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201112063322_AddAplikasiNameInRencanaTimeline.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201115034209_AddRencanaKurva.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201115034209_AddRencanaKurva.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201115034548_AddRencanaKurva.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201115034548_AddRencanaKurva.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201115034805_AddRencanaKurva.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201115034805_AddRencanaKurva.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201115041309_AddRencanaKurva.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201115041309_AddRencanaKurva.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201115174639_AddRencanaKurva.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201115174639_AddRencanaKurva.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201214090944_ChangeDevIdToId.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201214090944_ChangeDevIdToId.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201216052446_AddRencanaWeightFactor.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201216052446_AddRencanaWeightFactor.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201216052607_AddRencanaWeightFactor.cs" />
+    <Compile Remove="Migrations\Aplikasi\20201216052607_AddRencanaWeightFactor.Designer.cs" />
+    <Compile Remove="Migrations\Aplikasi\20210108003247_addTableWeightFactor.cs" />
+    <Compile Remove="Migrations\Aplikasi\20210108003247_addTableWeightFactor.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\files\brd\" />
+    <Folder Include="wwwroot\files\logo\" />
+    <Folder Include="wwwroot\files\eut\" />
+    <Folder Include="wwwroot\files\ba\" />
+    <Folder Include="wwwroot\files\changerequest\" />
+    <Folder Include="wwwroot\files\ik\" />
+    <Folder Include="wwwroot\files\brd_aplikasi\" />
+    <Folder Include="wwwroot\files\laporan\" />
+    <Folder Include="wwwroot\files\prosedur\" />
+    <Folder Include="wwwroot\files\uat\" />
+    <Folder Include="wwwroot\files\usermanual\" />
+    <Folder Include="wwwroot\files\okprpo\" />
+    <Folder Include="wwwroot\files\tor\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\lib\bootstrap\" />
+    <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
+    <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />
+    <Folder Include="wwwroot\lib\jquery-validation\" />
+    <Folder Include="wwwroot\lib\jquery-validation\dist\" />
+    <Folder Include="wwwroot\lib\jquery\" />
+    <Folder Include="wwwroot\lib\jquery\dist\" />
+  </ItemGroup>
+
+</Project>

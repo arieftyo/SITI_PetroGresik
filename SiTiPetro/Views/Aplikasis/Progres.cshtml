@@ -1,0 +1,95 @@
+﻿@model List<SiTiPetro.ViewModels.AplikasiViewModel.ProgresAplikasiViewModel>
+@{
+    ViewData["Title"] = "Progres Aplikasi";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+    var index = 1;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Bordered Table</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Aplikasi</th>
+                        <th>Tahun</th>
+                        <th>Bulan</th>
+                        <th>Progress</th>
+                        <th style="width: 40px">Label</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var progres in Model)
+                    {
+                        <tr>
+                            <td>@index</td>
+                            <td>@progres.AplikasiName</td>
+                            <td>@progres.Tahun</td>
+                            <td>@progres.Bulan</td>
+                            <td>
+                                <div class="progress progress-xs">
+                                    @if (progres.Progres <= 30.0)
+                                    {
+                                        <div class="progress-bar bg-danger" style="@("width: "+ progres.ProgresDot+"%")"></div>
+                                    }
+                                    else if (progres.Progres > 30.0 && progres.Progres <= 60.0)
+                                    {
+                                        <div class="progress-bar bg-warning" style="@("width: "+ progres.ProgresDot+"%")"></div>
+                                    }
+                                    else
+                                    {
+                                        <div class="progress-bar bg-success" style="@("width: "+ progres.ProgresDot+"%")"></div>
+                                    }
+                                </div>
+                            </td>
+                            <td>
+                                @if (progres.Progres <= 30.0)
+                                {
+                                    <span class="badge bg-danger">@(progres.Progres + "%")</span>
+                                }
+                                else if (progres.Progres > 30.0 && progres.Progres <= 60.0)
+                                {
+                                    <span class="badge bg-warning">@(progres.Progres + "%")</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">@(progres.Progres + "%")</span>
+                                }
+                            </td>
+                        </tr>
+                        index++;
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+
+    <script>
+        $(function () {
+            $("#table").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "responsive": true,
+            });
+        });
+    </script>
+</body>
+
+</html>

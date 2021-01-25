@@ -1,0 +1,87 @@
+﻿@model IEnumerable<SiTiPetro.Models.Aplikasi>
+@{
+    ViewData["Title"] = "Realisasi Aplikasi";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-body">
+            <table id="table" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Nama Aplikasi
+                        </th>
+                        <th>
+                            Realisasi Timeline Aplikasi
+                        </th>
+                        <th>
+                            Realisasi Kurva
+                        </th>
+                        <th>
+                            Input Weight Factor
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.nama)
+                            </td>
+                            <td>
+                                <a asp-controller="RencanaTimeline" asp-action="Realisasi" asp-route-id="@item.Id"
+                                   class="btn bg-gradient-primary">
+                                    <i class="fas fa-calendar">
+                                    </i>
+                                    Realisasi Timeline
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-controller="RencanaKurva" asp-action="Realisasi" asp-route-id="@item.Id"
+                                   class="btn bg-gradient-success">
+                                    <i class="fas fa-tasks">
+                                    </i>
+                                    Realisasi Kurva
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-controller="WeightFactor" asp-action="Detail" asp-route-id="@item.Id"
+                                   class="btn bg-gradient-danger">
+                                    <i class="fas fa-file">
+                                    </i>
+                                    Input Weight Factor
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $("#table").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "responsive": true,
+            });
+        });
+    </script>
+</body>
+
+</html>

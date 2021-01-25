@@ -1,0 +1,91 @@
+﻿@model SiTiPetro.ViewModels.RencanaWeightFactorViewModel.EditRencanaWeightFactorViewModel
+@{
+    ViewData["Title"] = "Edit Rencana Weight Factor";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<section class="content">
+    <div class="col-md-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Rencana Timeline</h3>
+            </div>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="aplikasiId" name="aplikasiId" />
+                <input type="hidden" asp-for="rencanaWeightFactorId" name="rencanaWeightFactorId" />
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="brd" class="control-label">BRD</label>
+                        <input asp-for="brd" class="form-control" name="brd" />
+                        <span asp-validation-for="brd" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="finalisasiBRD" class="control-label">Finalisasi BRD</label>
+                        <input asp-for="finalisasiBRD" class="form-control" name="finalisasiBRD" />
+                        <span asp-validation-for="finalisasiBRD" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="pengadaan" class="control-label">Pengadaan</label>
+                        <input asp-for="pengadaan" class="form-control" name="pengadaan" />
+                        <span asp-validation-for="pengadaan" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="desainPrototype" class="control-label">Desain Prototype</label>
+                        <input asp-for="desainPrototype" class="form-control" name="desainPrototype" />
+                        <span asp-validation-for="desainPrototype" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="pengembangan" class="control-label">Pengembangan</label>
+                        <input asp-for="pengembangan" class="form-control" name="pengembangan" />
+                        <span asp-validation-for="pengembangan" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="testing" class="control-label">Testing</label>
+                        <input asp-for="testing" class="form-control" name="testing" />
+                        <span asp-validation-for="testing" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="eut" class="control-label">EUT</label>
+                        <input asp-for="eut" class="form-control" name="eut" />
+                        <span asp-validation-for="eut" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="goLive" class="control-label">Pengadaan</label>
+                        <input asp-for="goLive" class="form-control" name="goLive" />
+                        <span asp-validation-for="goLive" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="support" class="control-label">Support</label>
+                        <input asp-for="support" class="form-control" name="support" />
+                        <span asp-validation-for="support" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Simpan Rencana Weight Factor</button>
+
+                    <div style="float: right">
+                        <a asp-action="Detail" asp-route-id="@Model.aplikasiId" class="btn btn-success">Kembali</a>
+                    </div>
+                </div>
+            </form>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</section>
+<script>
+    $(function () {
+
+        //Date range picker
+        $('#dateClosing').daterangepicker()
+        $('#dateSupport').daterangepicker()
+        $('#dateGolive').daterangepicker()
+        $('#dateEut').daterangepicker()
+        $('#dateTesting').daterangepicker()
+        $('#datePengembangan').daterangepicker()
+        $('#dateDesainPrototype').daterangepicker()
+        $('#datePengadaan').daterangepicker()
+        $('#dateFinalisasiBrd').daterangepicker()
+        $('#dateBrd').daterangepicker()
+    })
+</script>

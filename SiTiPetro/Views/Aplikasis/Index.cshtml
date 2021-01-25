@@ -1,0 +1,140 @@
+﻿@model IEnumerable<SiTiPetro.Models.Aplikasi>
+
+@{
+    ViewData["Title"] = "Permintaan Aplikasi";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        <a asp-action="Create" class="btn-lg bg-gradient-primary">
+            Buat Permintaan Aplikasi
+        </a>
+    </p> 
+    <div class="card">
+        <div class="card-body">
+            <table id="table" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Nama Aplikasi
+                        </th>
+                        <th>
+                            Nomor Surat
+                        </th>
+                        <th>
+                            Departemen
+                        </th>
+                        <th>
+                            PIC
+                        </th>
+                        <th>
+                            Jenis Aplikasi
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.nama)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.nomor_surat_dof)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.departermen)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.pic_unit_terkait)
+                            </td>
+
+                            @if (item.jenis_aplikasi == 1)
+                            {
+                                <td>
+                                    Website
+                                </td>
+                            }
+
+                            @if (item.jenis_aplikasi == 2)
+                            {
+                                <td>
+                                    Mobile
+                                </td>
+                            }
+                            @if (item.jenis_aplikasi == 3)
+                            {
+                                <td>
+                                    Website dan Mobile
+                                </td>
+                            }
+                            <td>
+                                <div style="display: inline-block">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-block btn-success">Edit</a>
+                                </div>
+                                <div style="display: inline-block;  margin-left: 30px;">
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-block btn-primary">Details</a>
+                                </div>
+                                <div style="display : inline-block;  margin-left: 30px;">
+                                    <a data-toggle="modal" data-target="@("#modal-delete-"+item.Id)" class="btn btn-block btn-danger text-white">Delete</a>
+                                </div>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $("#table").DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+</body>
+
+@foreach (var item in Model)
+{
+<div class="modal fade" id="@("modal-delete-"+item.Id)">
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="@item.Id" name="Id"/>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Hapus Permintaan Aplikasi</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah Anda yakin untuk menghapus Permintaan Aplikasi ?</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-primary">Iya</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+}
+</html>

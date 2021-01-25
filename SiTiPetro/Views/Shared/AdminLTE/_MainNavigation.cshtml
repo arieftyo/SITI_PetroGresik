@@ -1,0 +1,99 @@
+﻿
+
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<SiTiPetro.Areas.Identity.Data.ApplicationUser> UserManager
+@inject SignInManager<SiTiPetro.Areas.Identity.Data.ApplicationUser> signInManager
+@using static SiTiPetro.Helpers.NavigationIndicatorHelper;
+
+@{ 
+    var user = await UserManager.GetUserAsync(User);
+}
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+        <img src="~/img/logopetro.jpg" alt="Logo Petrokimia" class="brand-image"
+             style="opacity: .8">
+        <span class="brand-text font-weight-light">SITI Petro</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="info">
+                <a href="#" class="d-block">@user.FirstName @user.LastName</a>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+    with font-awesome or any other icon font library -->
+                <li class="nav-item">
+                    <a asp-controller="Home" asp-action="Index" class="nav-link @Url.MakeActiveClass("home","index")">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            Home
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Home" asp-action="Privacy" class="nav-link @Url.MakeActiveClass("home","privacy")">
+                        <i class="nav-icon fas fa-lock"></i>
+                        <p>
+                            Privacy
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Aplikasis" asp-action="Index" class="nav-link @Url.MakeActiveClass("aplikasis","index")">
+                        <i class="nav-icon fas fa-laptop"></i>
+                        <p>
+                            Permintaan Aplikasi
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="DaftarAplikasis" asp-action="Index" class="nav-link @Url.MakeActiveClass("daftaraplikasis","index")">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Daftar Aplikasi
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Aplikasis" asp-action="Realisasi" class="nav-link @Url.MakeActiveClass("aplikasis","realisasi")">
+                        <i class="nav-icon fas fa-check-square"></i>
+                        <p>
+                            Realisasi Aplikasi
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Aplikasis" asp-action="Progres" class="nav-link @Url.MakeActiveClass("aplikasis","progres")">
+                        <i class="nav-icon fas fa-chart-bar"></i>
+                        <p>
+                            Progres Aplikasi
+                        </p>
+                    </a>
+                </li>
+                @if (signInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
+                {
+                    <li class="nav-item">
+                        <a asp-controller="Administration" asp-action="ListRoles" class="nav-link @Url.MakeActiveClass("administration","ListRoles")">
+                            <i class="nav-icon fas fa-laptop"></i>
+                            <p>
+                                Role Manager
+                            </p>
+                        </a>
+                    </li>
+                }
+
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

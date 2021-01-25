@@ -1,0 +1,118 @@
+﻿@model SiTiPetro.ViewModels.RencanaKurvaViewModel.DetailRencanaKurvaViewModel
+@{
+    ViewData["Title"] = "Rencana Kurva";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<section class="content">
+    <p>
+        <a asp-action="Create" asp-route-id="@Model.aplikasiId" class="btn-lg bg-gradient-success">
+            Tambah Rencana Kurva
+        </a>
+    </p>
+    <div class="card">
+        <div class="card-header p-2">
+            <h2 class="card-title">Rencana Kurva</h2>
+        </div>
+        <div class="card-body">
+            <table id="table" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Bulan
+                        </th>
+                        <th>
+                            Minggu
+                        </th>
+                        <th>
+                            Rencana Progress
+                        </th>
+                        <th>
+                            Presentase
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var kurva in Model.listRencanaKurvas)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => kurva.Bulan)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => kurva.Minggu)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => kurva.RencanProgres)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => kurva.Presentasi)
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="@("#modal-delete-"+kurva.Id)">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </button>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div>
+                <div class="text-right mr-3 mt-3">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@foreach (var kurva in Model.listRencanaKurvas)
+{
+<div class="modal fade" id="@("modal-delete-"+kurva.Id)">
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="@kurva.Id" name="id" />
+        <input type="hidden" asp-for="@kurva.aplikasiId" name="aplikasiId" />
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Hapus Rencana Kurva</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah Anda yakin untuk menghapus Rencana Kurva ?</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-primary">Iya</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+    </form>
+    <!-- /.modal-dialog -->
+</div>
+}
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#table').DataTable({
+            "order": [[0, "asc"], [1, "asc"]],
+            "column": [
+                {
+                    "width": "20%",
+                    "widht": "20%",
+                    "widht": "20%",
+                    "widht": "20%",
+                    "widht": "20%"}]
+        });
+    });
+</script>

@@ -1,0 +1,165 @@
+﻿@model SiTiPetro.ViewModels.RencanaTimelineViewModel.EditRencanaTimelineViewModel
+@{
+    ViewData["Title"] = "Rencana Timeline";
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<section class="content">
+    <div class="col-md-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Rencana Timeline</h3>
+            </div>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="aplikasiId" name="aplikasiId" />
+                <input type="hidden" asp-for="rencanaTimelineId" name="rencanaId" />
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="control-label">BRD</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateBrd" name="dateBrd" value="@Model.dateBrd">
+                            <span asp-validation-for="dateBrd" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Finalisasi BRD & TOR</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateFinalisasiBrd" name="dateFinalisasiBrd" value="@Model.dateFinalBrd">
+                            <span asp-validation-for="dateFinalBrd" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Pengadaan</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="datePengadaan" name="datePengadaan" value="@Model.datePengadaan">
+                            <span asp-validation-for="datePengadaan" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Desain Prototype</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateDesainPrototype" name="dateDesainPrototype" value="@Model.dateDesainPrototype">
+                            <span asp-validation-for="dateDesainPrototype" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Pengembangan</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="datePengembangan" name="datePengembangan" value="@Model.datePengembangan">
+                            <span asp-validation-for="datePengembangan" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Testing / UAT</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateTesting" name="dateTesting" value="@Model.dateTesting">
+                            <span asp-validation-for="dateTesting" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">End User Training (EUT)</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateEut" name="dateEut" value="@Model.dateEut">
+                            <span asp-validation-for="dateEut" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Go Live</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateGolive" name="dateGolive" value="@Model.dateGoLive">
+                            <span asp-validation-for="dateGoLive" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Support</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateSupport" name="dateSupport" value="@Model.dateSupport">
+                            <span asp-validation-for="dateSupport" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Closing</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateClosing" name="dateClosing" value="@Model.dateClosing">
+                            <span asp-validation-for="dateClosing" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a asp-action="Detail" asp-route-id="@Model.aplikasiId" class="btn btn-danger">Batalkan Perubahan</a>
+                    <div style="float: right">
+                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                    </div>
+                </div>
+            </form>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</section>
+<script>
+    $(function () {
+
+        //Date range picker
+        $('#dateClosing').daterangepicker()
+        $('#dateSupport').daterangepicker()
+        $('#dateGolive').daterangepicker()
+        $('#dateEut').daterangepicker()
+        $('#dateTesting').daterangepicker()
+        $('#datePengembangan').daterangepicker()
+        $('#dateDesainPrototype').daterangepicker()
+        $('#datePengadaan').daterangepicker()
+        $('#dateFinalisasiBrd').daterangepicker()
+        $('#dateBrd').daterangepicker()
+    })
+</script>
